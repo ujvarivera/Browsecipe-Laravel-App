@@ -10,3 +10,9 @@ To install it in new Laravel applications:
 
 After that we can make a new user in the terminal with the help of this command:
 `php artisan make:filament-user`
+
+Filament documentation page can be read [here](https://filamentphp.com/docs/2.x/admin/installation).
+
+## Images
+To access images publicly, we have to make a symbolic link from public/storage to storage/app/public.
+`php artisan storage:link`
