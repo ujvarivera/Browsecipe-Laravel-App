@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container max-w-4xl mx-auto py-6">
+    <div class="mx-auto">
 
         {{ $recipes->links() }}
 

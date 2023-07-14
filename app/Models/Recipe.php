@@ -50,4 +50,9 @@ class Recipe extends Model
 
         return '/storage/' . $this->image;
     }
+
+    public function getFormattedDate()
+    {
+        return $this->created_at->format('F jS Y');
+    }
 }

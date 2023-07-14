@@ -13,4 +13,23 @@ class RecipeController extends Controller
 
         return view('recipes.index', compact('recipes'));
     }
+
+    public function show(Recipe $recipe)
+    {
+        if(!$recipe->active == 1) {
+            abort(404);
+        }
+
+        $prev_recipe = Recipe::query()
+                        ->where('active', 1)
+                        ->where('id', '<', $recipe->id)
+                        ->first();
+
+        $next_recipe = Recipe::query()
+                    ->where('active', 1)
+                    ->where('id', '>', $recipe->id)
+                    ->first();
+
+        return view('recipes.show', compact('recipe', 'prev_recipe', 'next_recipe'));
+    }
 }
