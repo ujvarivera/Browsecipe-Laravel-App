@@ -1,6 +1,7 @@
 <x-app-layout>
 
     <section class="w-full md:w-2/3 flex flex-col items-center px-3">
+        <x-count-recipes-by-categories />
 
         <article class="flex flex-col shadow my-4">
             <!-- Article Image -->
@@ -9,7 +10,7 @@
             <div class="bg-white flex flex-col justify-start p-6">
                 <div class="flex flex-col md:grid md:grid-cols-3 gap-2 justify-center pb-4 mx-auto">
                     @foreach ($recipe->categories as $category)
-                        <a href="#" class="text-green-700 text-sm font-bold uppercase pb-4">{{ $category->title }}</a>
+                        <a href={{ route('getRecipesByCategory', $category) }} class="text-green-700 text-sm font-bold uppercase pb-4">{{ $category->title }}</a>
                     @endforeach   
                 </div>             
                 <p class="text-3xl font-bold text-green-700 pb-4">{{ $recipe->name }}</p>
@@ -41,7 +42,6 @@
         </div>
 
 
-        <x-sidebar/>
     </section>
 
 </x-app-layout>

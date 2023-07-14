@@ -1,5 +1,7 @@
 <x-app-layout>
+    <x-count-recipes-by-categories />
     <div class="mx-auto">
+        
 
         {{ $recipes->links() }}
 

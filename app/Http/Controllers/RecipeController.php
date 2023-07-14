@@ -37,13 +37,13 @@ class RecipeController extends Controller
     public function getRecipesByCategory(Category $category)
     {
         $recipes = Recipe::query()
-            ->join('category_recipe', 'recipes.id', '=', 'category_recipe.recipe_id')
+            ->join('category_recipe', 'recipes.id' , '=', 'category_recipe.recipe_id')
+            ->select('recipes.id', 'recipes.name', 'recipes.slug', 'recipes.image', 'recipes.created_at', 'recipes.description', 'recipes.user_id')
             ->where('category_recipe.category_id', '=', $category->id)
             ->where('recipes.active', 1)
             ->orderBy('recipes.created_at', 'desc')
             ->paginate(10);
-
-        dd($recipes);
-        //return view('recipes.index', compact('recipes', 'category'));
+            
+        return view('recipes.index', compact('recipes'));
     }
 }
