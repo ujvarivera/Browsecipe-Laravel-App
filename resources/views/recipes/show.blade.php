@@ -8,7 +8,7 @@
             <img src={{ $recipe->getImage() }}>
 
             <div class="bg-white flex flex-col justify-start p-6">
-                <div class="flex flex-col md:grid md:grid-cols-3 gap-2 justify-center pb-4 mx-auto">
+                <div class="flex gap-4 pb-4">
                     @foreach ($recipe->categories as $category)
                         <a href={{ route('getRecipesByCategory', $category) }} class="text-green-700 text-sm font-bold uppercase pb-4">{{ $category->title }}</a>
                     @endforeach   

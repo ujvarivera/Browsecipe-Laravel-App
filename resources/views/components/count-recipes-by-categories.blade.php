@@ -3,7 +3,8 @@
         <h3 class="text-xl text-green-700 font-semibold mb-3">{{__('Top 5 Categories') }}</h3>
         @foreach($categories as $category)
             <a href={{ route('getRecipesByCategory', $category) }}
-               class="text-semibold block py-2 px-3 rounded hover:text-green-600">
+               class="text-semibold block py-2 px-3 rounded hover:text-green-600
+                    {{ request('category') && request('category')->slug === $category->slug ? 'bg-green-200' : '' }}">
                 {{$category->title}} ({{$category->total}})
             </a>
         @endforeach
