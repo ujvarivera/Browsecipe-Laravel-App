@@ -22,6 +22,8 @@
             </div>
         </article>
 
+        <x-user-card :user="$recipe->user"/>
+
         <div class="w-full flex pt-6">
             <div class="w-1/2">
                 @if ($prev_recipe)
