@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [RecipeController::class, 'index'])->name('home');
 Route::get('/{recipe:slug}', [RecipeController::class, 'show'])->name('recipes.show');
-
+Route::get('/categories/{category:slug}', [RecipeController::class, 'getRecipesByCategory'])->name('categories.getRecipes');

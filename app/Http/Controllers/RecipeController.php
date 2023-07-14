@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 
@@ -31,5 +32,18 @@ class RecipeController extends Controller
                     ->first();
 
         return view('recipes.show', compact('recipe', 'prev_recipe', 'next_recipe'));
+    }
+
+    public function getRecipesByCategory(Category $category)
+    {
+        $recipes = Recipe::query()
+            ->join('category_recipe', 'recipes.id', '=', 'category_recipe.recipe_id')
+            ->where('category_recipe.category_id', '=', $category->id)
+            ->where('recipes.active', 1)
+            ->orderBy('recipes.created_at', 'desc')
+            ->paginate(10);
+
+        dd($recipes);
+        //return view('recipes.index', compact('recipes', 'category'));
     }
 }
